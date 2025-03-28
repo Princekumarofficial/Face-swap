@@ -1,1 +1,0 @@
-rotated_face_crop = cv2.warpAffine(scaled_face_crop, rotation_matrix, (scaled_face_crop.shape[1], scaled_face_crop.shape[0]))
