@@ -302,7 +302,10 @@ def seamless_clone_face(img1, img2, result, head_mask):
     face_center = (int(x + w / 2), int(y + h / 2))
     
     # Perform seamless cloning
-    seamlessclone = cv2.seamlessClone(result, img2, head_mask, face_center, cv2.NORMAL_CLONE)
+    # Convert head_mask to 3-channel image
+    head_mask_3channel = cv2.merge([head_mask, head_mask, head_mask])
+    
+    seamlessclone = cv2.seamlessClone(result, img2, head_mask_3channel, face_center, cv2.NORMAL_CLONE)
     
     output_path = "output_face_swap.jpg"
     cv2.imwrite(output_path, seamlessclone)
